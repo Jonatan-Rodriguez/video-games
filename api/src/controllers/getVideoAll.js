@@ -13,10 +13,31 @@ const getVideoAll = async (req, res) => {
         if (name) {
 
             const videoGameFound = [];
+
+            //busqueda en la base de datos
             const videoGamesDbFound = await Videogame.findAll({ where: { name: name } });
 
-            if (videoGamesDbFound) {
-                videoGameFound.push(videoGamesDbFound);
+            if (videoGamesDbFound[0]) {
+
+                videoGamesDbFound.map(async (gamesDb) => {
+                    const genDb = await gamesDb.getGenres();
+
+                    const genreFilter = [];
+                    genDb.map((gen) => {
+                        genreFilter.push(gen.name);
+                    });
+
+                    const videoDb = {
+                        name: gamesDb.name,
+                        image: gamesDb.image,
+                        genres: genreFilter
+                    }
+
+                    videoGameFound.push(videoDb);
+
+                })
+
+
             };
 
             const { data } = await axios(`${URL}?search=${name}&key=${API_KEY}`);
@@ -24,11 +45,16 @@ const getVideoAll = async (req, res) => {
             if (data.results) {
                 const resultadosLimitados = data.results.slice(0, 15);
                 resultadosLimitados.map((video) => {
+                    const genreFilter = [];
+
+                    video.genres.map((gen) => {
+                        genreFilter.push(gen?.name);
+                    });
+
                     const videoGame = {
                         name: video?.name,
                         image: video?.background_image,
-                        released: video?.released,
-                        rating: video?.rating,
+                        genre: genreFilter,
                     }
                     videoGameFound.push(videoGame);
                 });
@@ -44,7 +70,7 @@ const getVideoAll = async (req, res) => {
         const allVideoGames = [];
         const videoGamesDb = await Videogame.findAll();
 
-        if (videoGamesDb) {
+        if (videoGamesDb[0]) {
             videoGamesDb.map((videoDb) => {
                 allVideoGames.push(videoDb);
             });
@@ -52,13 +78,19 @@ const getVideoAll = async (req, res) => {
 
         const { data } = await axios(`${URL}?key=${API_KEY}`);
 
+
         if (data.results) {
             data.results.map((video) => {
+                const genreFilter = [];
+
+                video.genres.map((gen) => {
+                    genreFilter.push(gen?.name);
+                });
+
                 const videoGame = {
                     name: video?.name,
                     image: video?.background_image,
-                    released: video?.released,
-                    rating: video?.rating,
+                    genre: genreFilter,
                 }
                 allVideoGames.push(videoGame);
             });

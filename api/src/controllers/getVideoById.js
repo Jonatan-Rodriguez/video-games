@@ -10,7 +10,7 @@ const getVideoById = async (req, res) => {
 
         const videoGameDb = await Videogame.findOne({ where: { id: id } });
         if (videoGameDb) {
-            //estas condiciones se cumplen si el id es de una video juego de la BD
+            //estas condiciones se cumplen si el id es de la BD
 
             const genDb = await videoGameDb.getGenres();
 
@@ -31,7 +31,7 @@ const getVideoById = async (req, res) => {
 
             return res.status(200).json(videoDbGenre);
         }
-        //estas condiciones se cumplen si el id es de una video juego de la API
+        //estas condiciones se cumplen si el id es de la API
         const { data } = await axios(`${URL}/${id}?key=${API_KEY}`);
 
         if (data.id) {
