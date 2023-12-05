@@ -1,6 +1,7 @@
 //libraries
-import axios from 'axios';
+/* import axios from 'axios'; */
 import { Routes, Route } from 'react-router-dom';
+//hook
 //Pages
 import Landing from './views/Landing/Landing.jsx';
 import Home from './views/Home/Home.jsx';
@@ -11,21 +12,12 @@ import './App.css';
 
 function App() {
 
-  const onSearch = async (nombre) => {
-    try {
-      const { data } = await axios(`http://localhost:3001/videogames?name=${nombre}`);
-
-      console.log(data);
-    } catch (error) {
-      alert('¡No hay video juegos con este nombre!');
-    }
-  }
 
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Landing />} />
-        <Route path='/home' element={<Home onSearch={onSearch} />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/form' element={<Form />} />
         <Route path='/detail/:id' element={<Detail />} />
       </Routes>

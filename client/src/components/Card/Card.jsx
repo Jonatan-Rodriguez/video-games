@@ -1,9 +1,21 @@
 import { ContainerCard } from "./card.styled";
+import { Link } from "react-router-dom";
 
-const Card = () => {
+const Card = ({ image, name, genre, id }) => {
     return (
         <ContainerCard>
-            <h1>card</h1>
+            <div className="imgContainer">
+                <Link to={`/detail/${id}`}>
+                    <img src={image} alt={name} />
+                    <div className="overlay">
+                        {/* <img className='infoIco' src={info}/> */}
+                        <p>Saber mas</p>
+                    </div>
+                </Link>
+            </div>
+            <p><b>{name}</b></p>
+            <p>genero</p>
+            <p>{genre}</p>
         </ContainerCard>
     )
 }

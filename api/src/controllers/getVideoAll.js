@@ -24,10 +24,11 @@ const getVideoAll = async (req, res) => {
 
                     const genreFilter = [];
                     genDb.map((gen) => {
-                        genreFilter.push(gen.name);
+                        genreFilter.push(`${gen.name} `);
                     });
 
                     const videoDb = {
+                        id: gamesDb.id,
                         name: gamesDb.name,
                         image: gamesDb.image,
                         genres: genreFilter
@@ -48,10 +49,11 @@ const getVideoAll = async (req, res) => {
                     const genreFilter = [];
 
                     video.genres.map((gen) => {
-                        genreFilter.push(gen?.name);
+                        genreFilter.push(`${gen?.name} `);
                     });
 
                     const videoGame = {
+                        id: video?.id,
                         name: video?.name,
                         image: video?.background_image,
                         genre: genreFilter,
@@ -84,10 +86,11 @@ const getVideoAll = async (req, res) => {
                 const genreFilter = [];
 
                 video.genres.map((gen) => {
-                    genreFilter.push(gen?.name);
+                    genreFilter.push(`${gen?.name} `);
                 });
 
                 const videoGame = {
+                    id: video?.id,
                     name: video?.name,
                     image: video?.background_image,
                     genre: genreFilter,

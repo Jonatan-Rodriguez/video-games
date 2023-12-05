@@ -1,21 +1,26 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { addVideo } from "../../redux/action";
 import { ContainerLanding } from "./landing.styled";
 
-const Landing = () => {
+const Landing = ({ addVideo }) => {
     return (
         <ContainerLanding>
             <h1>Landing</h1>
-            <Link to='/home'>
-                <button>Ingresar Home</button>
-            </Link>
             <Link to='/form'>
-                <button>Ingresar Form</button>
+                <button> ⬅ Crear Video Juego </button>
             </Link>
-            <Link to='/detail/:id'>
-                <button>Ingresar Detail</button>
+            <Link to='/home'>
+                <button onClick={addVideo}> Ingresar ➡ </button>
             </Link>
         </ContainerLanding>
     )
 }
 
-export default Landing;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addVideo: () => dispatch(addVideo())
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Landing);

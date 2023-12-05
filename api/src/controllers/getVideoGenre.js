@@ -4,7 +4,7 @@ const getVideoGenre = async (req, res) => {
     try {
         const videoGenreDb = await Genre.findAll();
 
-        if (!videoGenreDb) return res.status(404).json({ error: 'base de datos Genre vacia' });
+        if (!videoGenreDb[0]) return res.status(404).json({ error: 'base de datos Genre vacia' });
 
         return res.status(200).json(videoGenreDb);
 
