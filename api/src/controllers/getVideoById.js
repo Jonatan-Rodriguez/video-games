@@ -21,13 +21,14 @@ const getVideoById = async (req, res) => {
                 });
 
                 const videoDbGenre = {
+                    id: videoGameDb.id,
                     name: videoGameDb.name,
                     description: videoGameDb.description,
                     platforms: videoGameDb.platforms,
                     image: videoGameDb.image,
                     released: videoGameDb.released,
                     rating: videoGameDb.rating,
-                    genres: genreFilter
+                    genre: genreFilter
                 }
 
                 return res.status(200).json(videoDbGenre);

@@ -7,16 +7,20 @@ const Detail = () => {
     const { id } = useParams();
     const [videoGame, setVideoGame] = useState({});
 
-    useEffect(async () => {
+    const detailGet = async() => {
         try {
             const { data } = await axios(`http://localhost:3001/videogames/${id}`);
             if (data.name) {
                 setVideoGame(data);
             }
         } catch (error) {
-            alert('¡No hay personajes con este ID!');
+            alert('¡No hay video juegos con este ID!');
         }
-    }, [id]);
+    }
+
+    useEffect(() => {
+        detailGet();
+    }, []);
 
 
 

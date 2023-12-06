@@ -10,6 +10,10 @@ export const ContainerCards = styled.div`
     gap: 20px;
     background-color: #18191a;
     padding: 2% 5%;
+    
+    h1{
+        color: white;
+    }
 
     .cards{
         display: flex;

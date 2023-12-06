@@ -1,28 +1,32 @@
 import { ContainerHome } from "./home.styled";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Cards from '../../components/Cards/Cards';
-import { filterCards, orderCards } from "../../redux/action";
-import { useDispatch } from "react-redux";
+import SelectBox from "../../components/SelectBox/SelectBox";
+import { addVideo } from "../../redux/action";
+import { connect } from "react-redux";
+import { useEffect } from "react";
 
-const Home = () => {
-    const dispatch = useDispatch();
+const Home = ({ addVideo }) => {
 
-    const handleFilter = (event) => {
-        dispatch(filterCards(event.target.value));
-    }
+    useEffect(() => {
+        addVideo();
+    }, []);
 
     return (
         <ContainerHome>
-            <h1>HOME</h1>
-            <SearchBar />
-            <select className='selectBox' onClick={handleFilter}>
-                <option value="created">Creaciones</option>
-                <option value="action">Genero</option>
-                <option value="all">Todos</option>
-            </select>
+            <div className="searchSelect">
+                <SearchBar />
+                <SelectBox/>
+            </div>
             <Cards />
         </ContainerHome>
     )
 }
 
-export default Home;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addVideo: () => dispatch(addVideo())
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Home);

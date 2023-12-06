@@ -101,11 +101,13 @@ export const ContainerDetail = styled.div`
                         display: flex;
                         align-items: center;
                         gap: 10px;
+                        flex-wrap:wrap;
 
                         .contenedor-des {
-                            width: 300px; /* Tamaño predefinido */
-                            height: 100px; /* Altura predefinida */
-                            overflow-y: auto; /* Muestra una barra de desplazamiento vertical cuando sea necesario */
+                            min-width: 100px;
+                            width: 220px; 
+                            height: 70px; 
+                            overflow-y: auto; 
                             color: #ffffff;
                             font-size: 1.3em;
                         }

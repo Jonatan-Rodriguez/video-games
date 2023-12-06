@@ -31,7 +31,9 @@ const getVideoAll = async (req, res) => {
                         id: gamesDb.id,
                         name: gamesDb.name,
                         image: gamesDb.image,
-                        genres: genreFilter
+                        genre: genreFilter,
+                        rating: gamesDb.rating,
+                        created: true
                     }
 
                     videoGameFound.push(videoDb);
@@ -40,7 +42,7 @@ const getVideoAll = async (req, res) => {
 
 
             };
-
+            //busqueda en la API
             const { data } = await axios(`${URL}?search=${name}&key=${API_KEY}`);
 
             if (data.results) {
@@ -57,6 +59,8 @@ const getVideoAll = async (req, res) => {
                         name: video?.name,
                         image: video?.background_image,
                         genre: genreFilter,
+                        rating: video?.rating,
+                        created: false
                     }
                     videoGameFound.push(videoGame);
                 });
@@ -69,15 +73,33 @@ const getVideoAll = async (req, res) => {
 
         //cumplira estas condiciones si no existe query
 
+        //traigo todos los video de la base de datos
         const allVideoGames = [];
         const videoGamesDb = await Videogame.findAll();
 
         if (videoGamesDb[0]) {
-            videoGamesDb.map((videoDb) => {
-                allVideoGames.push(videoDb);
+            videoGamesDb.map(async (videoDb) => {
+                const genDb = await videoDb.getGenres();
+
+                const genreFilter = [];
+                genDb.map((gen) => {
+                    genreFilter.push(`${gen.name} `);
+                });
+
+                const videoGamesDb = {
+                    id: videoDb.id,
+                    name: videoDb.name,
+                    image: videoDb.image,
+                    genre: genreFilter,
+                    rating: videoDb.rating,
+                    created: true
+                }
+
+                allVideoGames.push(videoGamesDb);
             });
         };
 
+        //traigo todos los video de la API
         const { data } = await axios(`${URL}?key=${API_KEY}`);
 
 
@@ -94,6 +116,8 @@ const getVideoAll = async (req, res) => {
                     name: video?.name,
                     image: video?.background_image,
                     genre: genreFilter,
+                    rating: video?.rating,
+                    created: false
                 }
                 allVideoGames.push(videoGame);
             });

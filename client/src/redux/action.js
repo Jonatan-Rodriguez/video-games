@@ -31,8 +31,8 @@ export const videoFound = (name) => {
     };
 };
 
-export const filterCards = (gender) => {
-    return { type: FILTER, payload: gender };
+export const filterCards = (opcion) => {
+    return { type: FILTER, payload: opcion };
 };
 
 export const orderCards = (order) => {

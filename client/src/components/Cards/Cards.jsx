@@ -5,15 +5,16 @@ import Card from '../Card/Card'
 const Cards = ({ allVideo }) => {
     return (
         <ContainerCards>
-            <h1>cards</h1>
+            <h1>Video Juegos</h1>
             <div className="cards">
-                {allVideo[0]?.map(video => {
+                {allVideo?.map(video => {
                     return (
                         <Card
                             key={video?.id}
                             id={video?.id}
                             image={video?.image}
                             name={video?.name}
+                            rating={video?.rating}
                             genre={video?.genre}
                         />
                     )
