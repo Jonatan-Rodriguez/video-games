@@ -36,12 +36,12 @@ const Detail = () => {
                         </div>
                         <div className='containerData'>
                             <h1 className='name'>{videoGame?.name}</h1>
-                            <div className='data'>{/* <img src={play} alt="episodios" /> */}<p>ID: {videoGame?.id}</p></div>
-                            <div className='data'>{/* <img src={play} alt="episodios" /> */}<p>Descripcion: </p> <div className="contenedor-des">{videoGame?.description}</div></div>
-                            <div className='data'>{/* <img src={pulso} alt="estado" /> */}<p>Fecha de lanzamiento: {videoGame?.released}.</p></div>
-                            <div className='data'>{/* <img src={gender} alt="genero" /> */}<p>Rating: {videoGame?.rating}.</p></div>
-                            <div className='data'>{/* <img src={planet} alt="origen" /> */}<p>Generos: {videoGame?.genre}.</p></div>
-                            <div className='data'>{/* <img src={mapPin} alt="localizacion" /> */}<p>Plataformas: {videoGame?.platforms}.</p></div>
+                            <div className='data'><p>ID: {videoGame?.id}</p></div>
+                            <div className='data'><p>Descripcion: </p> <div className="contenedor-des">{videoGame?.description}</div></div>
+                            <div className='data'><p>Fecha de lanzamiento: {videoGame?.released}.</p></div>
+                            <div className='data'><p>Rating: {videoGame?.rating}.</p></div>
+                            <div className='data'><p>Generos: {videoGame?.genre}.</p></div>
+                            <div className='data'><p>Plataformas: {videoGame?.platforms}.</p></div>
                         </div>
                     </div>
                 </div>

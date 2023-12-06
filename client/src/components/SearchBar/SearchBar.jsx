@@ -1,7 +1,11 @@
+//styled
 import { ContainerSearchBar } from "./searchbar.styled";
+//hook
 import { useState } from "react";
-import { videoFound } from "../../redux/action";
 import { connect } from "react-redux";
+//action
+import { videoFound } from "../../redux/action";
+//img
 import search from '../../assets/img/search.svg';
 
 const SearchBar = ({ videoFound }) => {

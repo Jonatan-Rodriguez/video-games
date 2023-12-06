@@ -5,7 +5,6 @@ export const ContainerCard = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    /* max-width: 200px; */
     width: 220px;
     min-width: 200px;
     height: 310px;

@@ -6,6 +6,7 @@ export const ContainerSearchBar = styled.div`
     align-items: center;
     justify-content: space-between;
     text-align: center;
+    margin-top:20px;
   }
 
   .search__input {

@@ -4,13 +4,27 @@ import { ContainerLanding } from "./landing.styled";
 const Landing = () => {
     return (
         <ContainerLanding>
-            <h1>Landing</h1>
-            <Link to='/form'>
-                <button> ⬅ Crear Video Juego </button>
-            </Link>
-            <Link to='/home'>
-                <button> Ingresar ➡ </button>
-            </Link>
+            <div class="context">
+                <Link to='/home'>
+                    <button class="button">
+                        <span class="button-content">Ingresar</span>
+                    </button>
+                </Link>
+            </div>
+            <div class="area" >
+                <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div >
         </ContainerLanding>
     )
 }

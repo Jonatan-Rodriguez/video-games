@@ -81,13 +81,6 @@ const reducer = (state = initialState, action) => {
                 default : return { ...state };
             }
 
-             /* const allVideoCopy= [...state.previousAllVideo];
-         return{
-             ...state,
-             allVideo: payloasd === 'A' ? allCharactersFavCopy.sort((a,b) => a.id - b.id) :
-             allCharactersFavCopy.sort((a,b) => b.id - a.id)
-            } */
-
         default:
             return { ...state };
     }
