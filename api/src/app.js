@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-/* APi VideoGames = https://api.rawg.io/api/games?key=4a5e1e3361694c1ab32a3383a8881d28 */
+
 require('./db.js');
 
 const server = express();

@@ -17,15 +17,14 @@ module.exports = ( sequelize ) => {
         }
     },{ timestamps: false });
 
+    //metodo que carga los generos automaticamente una vez creado el modelo
     Genre.afterSync(async () => {
-        // Verificar si la tabla de géneros está vacía
         const {data} = await axios(`${URL}?key=${API_KEY}`);
 
         const genresCount = await Genre.count();
 
         if (genresCount === 0) {
-            // Cargar datos iniciales de género al crear la tabla si está vacía
-
+            
             await data.results.map((gen) => {
                 Genre.create({id:gen?.id, name:gen?.name})
             });

@@ -6,14 +6,12 @@ const postVideo = async (req, res) => {
 
         const videoCreate = await Videogame.create({ name, description, platforms, image, released, rating });
 
-        // Encontrar el género correspondiente en la base de datos
         const foundGenre = await Genre.findOne({ where: { name: genre } });
 
         if (!foundGenre) {
             return res.status(404).json({ message: 'Género no encontrado' });
         };
 
-        // Asociar el género al videojuego utilizando el método 'addGenre'
         await videoCreate.addGenre(foundGenre.id);
 
         res.status(200).json(videoCreate);
